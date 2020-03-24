@@ -13,6 +13,7 @@ class Waiter
   def self.all
     @@all
   end
+  
   def new_meal(customer, total, tip=0)
     Meal.new(self, customer, total, tip)
   end
@@ -20,16 +21,15 @@ class Waiter
   def waiters
    meals.map {|meal| meal.waiter}
   end
+  
   def meals
   Meal.all.select {|meal| meal.waiter == self}
   end
+
   def best_tipper
-def best_tipper
    x = self.meals.map {|meal| meal}
    y = x.sort_by {|z| z.tip}
    y[-1].customer
- end
- 
- 
+  end
   
 end
