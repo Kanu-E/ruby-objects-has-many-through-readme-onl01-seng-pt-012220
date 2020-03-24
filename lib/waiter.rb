@@ -26,10 +26,8 @@ class Waiter
   Meal.all.select {|meal| meal.waiter == self}
   end
 
-  def best_tipper
-   x = self.meals.map {|meal| meal}
-   y = x.sort_by {|z| z.tip}
-   y[-1].customer
-  end
+ def best_tipper
+  self.meals.sort_by{|meal| meal.tip}[-1].customer  
+ end
   
 end
